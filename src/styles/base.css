@@ -1,0 +1,19 @@
+body {
+    @apply relative text-sm text-body;
+}
+
+h1, .h1 {
+    @apply text-3xl font-semibold text-body-800;
+}
+
+h2, .h2 {
+    @apply text-2xl font-semibold text-body-800;
+}
+
+h3, .h3 {
+    @apply text-xl font-medium text-body-800;
+}
+
+a.disabled {
+    @apply cursor-not-allowed pointer-events-none;
+}

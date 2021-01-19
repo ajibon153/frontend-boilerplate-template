@@ -1,0 +1,14 @@
+.btn {
+    @apply inline-block font-bold rounded-lg;
+    padding: 14px 18px;
+
+}
+
+.btn-block {
+    @apply block w-full font-bold text-center rounded-lg;
+    padding: 14px 18px;
+}
+
+.btn-primary {
+    @apply bg-primary text-white;
+}
