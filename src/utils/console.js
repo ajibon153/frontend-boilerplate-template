@@ -1,4 +1,4 @@
-import { publicRuntimeConfig } from '../config';
+import { publicRuntimeConfig } from '../config/env';
 
 const { NEXT_PUBLIC_ENABLE_CONSOLE_LOG_KEY } = publicRuntimeConfig;
 

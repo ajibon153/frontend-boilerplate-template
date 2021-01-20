@@ -1,7 +1,7 @@
 import { parse } from 'cookie';
 import { Cookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import { publicRuntimeConfig } from '../config';
+import { publicRuntimeConfig } from '../config/env';
 
 const {
   NEXT_PUBLIC_JWT_EXPIRATION_IN_HOURS: envCookieExpirationInHours,
