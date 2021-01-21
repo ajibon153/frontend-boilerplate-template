@@ -84,9 +84,9 @@ Notes:
 ## Tools
 
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Global State Management**: [<sup>[1]</sup>](#1)
-  - API-related state: [React Query](https://react-query.tanstack.com/) [<sup>[2]</sup>](#2)
-  - Form-related state: [React Hook Form](https://react-hook-form.com/) [<sup>[3]</sup>](#3)
+- **Global State Management**: [<sup id="1">[1]</sup>](#note-1)
+  - API-related state: [React Query](https://react-query.tanstack.com/) [<sup id="2">[2]</sup>](#note-2)
+  - Form-related state: [React Hook Form](https://react-hook-form.com/) [<sup id="3">[3]</sup>](#note-3)
   - Anything not related to API & form:  
     _Does it complex & frequent-update?_
     - _No_ 👉 Use built-in react context (combined with useState)
@@ -101,10 +101,10 @@ Notes:
   - Plugin: Airbnb, react, jsx-a11y
 - **Testing**: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
-Notes:
-1. <span id="1"></span>Global state means the state which can be **accessed & updated from anywhere** in the component tree (inside a provider) without needing to pass down the props.
-2. <span id="2"></span>Use [QueryClientProvider](https://react-query.tanstack.com/reference/QueryClientProvider) & [useQueryClient](https://react-query.tanstack.com/reference/useQueryClient).
-3. <span id="3"></span>Use FormProvider & [useFormContext](https://react-hook-form.com/api#useFormContext).
+Notes:  
+[<sup id="note-1">[1]</sup>](#1) <span id="1"></span>Global state means the state which can be **accessed & updated from anywhere** in the component tree (inside a provider) without needing to pass down the props.  
+[<sup id="note-2">[2]</sup>](#2) <span id="2"></span>Use [QueryClientProvider](https://react-query.tanstack.com/reference/QueryClientProvider) & [useQueryClient](https://react-query.tanstack.com/reference/useQueryClient).  
+[<sup id="note-3">[3]</sup>](#3) <span id="3"></span>Use FormProvider & [useFormContext](https://react-hook-form.com/api#useFormContext).
 
 
 ## Naming Conventions
