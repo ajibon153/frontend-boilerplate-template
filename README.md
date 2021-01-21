@@ -1,199 +1,152 @@
 # Front-end (Next.js) Boilerplate
 
-
-## Global State Management
-
-👉 **React Context + React Query**
-
-React Context utk state yg gak berkaitan dg API.  
-React Query utk state yg berkaitan dg API.
-
-FYI: Pake react-query, semua query/mutation bisa dibaca & di-_manage_ dr manapun.
-
-Contoh:  
-[https://github.com/afiiif/react-context-react-query](https://github.com/afiiif/react-context-react-query)  
-[react-context-react-query.vercel.app](https://react-context-react-query.vercel.app/)
+[Next.js](https://nextjs.org/) boilerplate based on the [official repo's examples](https://github.com/vercel/next.js/tree/canary/examples), best practices, and popular libraries in the developer community.
 
 
-## CSS Styling
+## Getting Started
 
-👉 **Tailwind CSS + Styled Components**
-
-Tailwind CSS perlu, soalnya ini sangat memudahkan utk ngatur spacing, layouting, dan style2 lainnya.  
-Styled Components dipake di shared components. Biar shared components punya style yg independen & gak bentrok className yg lain.
-
-
-## File Naming
-
-👉 **Prefer kebab-case**
-
-Alasan:  
-&dash; Konsistensi _case_ utk nama file.  
-&dash; Biar _feel_ nya sama ketika pake komponen sendiri atau yg berasal dr library.
-```
-import { Select } from 'react-select';  // not like this: ... from 'ReactSelect';
-import { MyComponent } from '../component/my-component';
-```
-
-👉 **Prefer ekstensi .js (daripada .jsx)**
-
-Mayoritas examples di official repo Next.js kebanyakan pake ekstensi .js.
+1. Clone this repo.
+2. Run `npm install` to install dependencies.
+3. Configure environment variables.
+   - Create `.env.local` file (or `.env.development`, or `.env.production`, see [official docs](https://nextjs.org/docs/basic-features/environment-variables)).
+   - Configure `env.js` file.
+4. Run `npm run dev`.
 
 
-## File Structuring
+## Scripts
 
-#### Component Files Structuring
-
-⬆️ Umum  
-&nbsp;&nbsp; |--- **/commons**  : Komponen yg sangat umum  
-&nbsp;&nbsp; |--- **/forms**    : Komponen yg sangat umum, tp spesifik utk form  
-&nbsp;&nbsp; |--- **/layouts**  : Komponen yg punya lokasi spesifik, gak bisa ditaro di sembarang tempat  
-&nbsp;&nbsp; |--- **/sections** : Komponen yang membentuk suatu area/block pada _views_  
-&nbsp;&nbsp; |--- **/views**    : Komponen besar yang memuat beberapa _section_ untuk membentuk suatu page utuh  
-⬇️ Spesifik
-
-![alt file-structure-components.png](https://i.postimg.cc/85KSLMLZ/file-structure-components.png)
-
-#### CSS Files Structuring
-
-File CSS dipisah2 pake plugin `postcss-import`.
-
-![alt file-structure-styles.png](https://i.postimg.cc/DyQpLFVF/file-structure-styles.png)
+- `npm run dev` - Run development mode
+- `npm run build` - Build the application for production
+- `npm run start` - Start a Next.js production server (require `npm run build` first)
+- `npm run start:express` - Start Next.js with Express server, required when using docker (because it can't get the environment variables when start using regular Next.js server 🤷)
+- `npm run lint` - Run [ESLint](https://eslint.org/)
+- `npm run lint:fix` - Fix codes from ESLint errors
+- `npm run test` - Run [jest](https://jestjs.io/) and collect test coverage
+- `npm run test:ci` - Run [jest](https://jestjs.io/) in a CI environment
 
 
-## Data Fetching
+## File Structure
 
-👉 **Axios**
+```raw
+.
+├── 📂 locales/                JSON files for internationalization (i18n)
+├── 📂 public/                 Public files (e.g. favicon)
+├── 📂 src/
+│   ├── 📂 __test__/           Test suite using Jest & React Testing Library
+│   ├── 📂 api/                API-related functions
+│   ├── ⚛️ components/
+│   │   ├── ⚛️ commons/        Common components
+│   │   ├── ⚛️ forms/          Common components which is used specifically for user input
+│   │   ├── ⚛️ layouts/        Components which has specific location in a page and cannot just be placed anywhere (e.g. header, sidebar, footer)
+│   │   ├── ⚛️ sections/       Components which create a block/section of a page
+│   │   └── ⚛️ views/          Biggest components, containing section components
+│   ├── 📂 config/
+│   ├── ⚛️ containers/         Components which has no UI, only for functionality (e.g. context-provider)
+│   ├── ⚛️ hooks/              Custom hooks
+│   ├── ⚛️ pages/              Next.js page components
+│   ├── 📂 styles/
+│   │   ├── 📂 components/     CSS files for components (e.g. button, table)
+│   │   ├── 📂 vendors/        CSS files for modifying external component library's style (e.g. react-select, react-modal)
+│   │   ├── base.css            Base styles
+│   │   ├── index.css           Contains @import statements to merge all CSS files
+│   │   └── utilities.css       Contains utility classes
+│   └── 📂 utils/              Utility functions
+├── .babelrc                    Babel configuration, used for Jest
+├── .editorconfig               EditorConfig file
+├── .env.local                  Put environment variables here
+├── .eslintignore
+├── .eslintrc.js                ESLint configuration
+├── .gitattributes
+├── .gitignore
+├── env.js                      Specify which environment variables are server-only and which should be exposed to the browser
+├── i18n.json                   i18n configuration, to specify namespaces
+├── jest.config.js              Jest configuration
+├── next.config.js              Next.js configuration
+├── package.json
+├── postcss.config.js           PostCSS configuration
+├── server.js                   Express.js server, used for docker only
+└── tailwind.config.js          Tailwind configuration
 
-Sesuai kesepakatan.  
-Axios jg punya fitur timeout, yg mana built-in fetch gak punya fitur tsb.
-
-
-## Form handling
-
-👉 **React-hook-form**
-
-Seperti project2 sebelumnya.
-
-
-## Date & Time Library
-
-👉 **date-fns**
-
-Alasan: modular, populer, fiturnya relatif lebih lengkap dibanding temen2nya (kayaknya sih)  
-
-[https://www.npmtrends.com/date-fns-vs-dayjs-vs-luxon-vs-moment](https://www.npmtrends.com/date-fns-vs-dayjs-vs-luxon-vs-moment)  
-Ter-populer kedua setelah Moment.js
-
-
-## Internationalization (i18n)
-
-👉 **Pake fitur terbaru Next.js 10 + Library next-translate**
-
-Alasan:  
-&dash; Official & Up-to-date (Library lain gak memanfaatkan fitur terbaru Next.js)  
-&dash; Konfigurasinya gampang  
-&dash; Bagus buat SEO
-
-Referensi:  
-&dash; [https://nextjs.org/blog/next-10#internationalized-routing](https://nextjs.org/blog/next-10#internationalized-routing)  
-&dash; [https://github.com/vinissimus/next-translate](https://github.com/vinissimus/next-translate)
-
-
-## Error Management
-
-👉 **Built-in React Error Boundary**
-
-
-## Javascript Linting
-
-👉 **Airbnb, react, jsx-a11y**
-
-Ini sama kayak project2 sebelumnya lah..
-
-#### Disabled rule from ESLint plugins above:
-
-🔘 `'no-console': 'off'`
-
-Kita butuh console.log buat debugging. Nah, ntar di production, fungsi console.log direplace dg fungsi kosongan.  
-[https://github.com/takalabid/boilerplate-candidate-by-afif/blob/master/src/utils/console.js](https://github.com/takalabid/boilerplate-candidate-by-afif/blob/master/src/utils/console.js)
-
-🔘 `'react/jsx-one-expression-per-line': 'off'`
-
-Ini di-disable krna bikin ribet.  
-Misal:
-```
-Lorem <i>ipsum</i> dolor sit amet
-```
-Mesti diganti dg:
-```
-Lorem
-{' '}
-<i>ipsum</i>
-{' '}
-dolor sit amet
+Notes:
+📂: Folder
+⚛️: React-related folder
 ```
 
-🔘 `'react/jsx-filename-extension': 'off'`
 
-Ini di-disable krna kita pake **kebab-case-filename.js**
+## File & Folder Naming
 
-🔘 `'react/jsx-props-no-spreading': 'off'`
-
-Kadang butuh props spreading di komponen.
-
-🔘 `'react/no-unescaped-entities': 'off'`
-
-Rule ini di-disable krna bikin ribet. Gak ada potensi error jg di sini.
-
-🔘 `'jsx-a11y/anchor-is-valid': 'off'`
-
-Di Next.js, anchor tag pasti bakal invalid, soalnya href itu dipasang di `<Link href="..."><a>Some Text</a></Link>`, jadi rule tsb wajib di-disable.
-
-🔘 `'jsx-a11y/label-has-associated-control': 'off'`
-
-Ini susah diterapkan di beberapa case.
-
-🔘 `'react/require-default-props': 'off'`
-
-Pake default parameters kayak di fungsi2 biasa.  
-[https://stackoverflow.com/questions/47774695/react-functional-component-default-props-vs-default-parameters](https://stackoverflow.com/questions/47774695/react-functional-component-default-props-vs-default-parameters)  
-💡 _"defaultProps on functional components will eventually be deprecated"_  
-[https://twitter.com/dan_abramov/status/1133878326358171650](https://twitter.com/dan_abramov/status/1133878326358171650)
-
-🔘 `'react/forbid-prop-types': 'off'`
-
-Biar bisa sekedar pake PropTypes.object.
-
-🔘 `'import/prefer-default-export': 'off'`
-
-Biar gak wajib export default.
+- In general, **kebab-case** is prefered for folder & file naming.
+- Use **kebab-case** and **.js** extension for react component file naming.  
+  You can create component file directly like `some-component.js`, or create a folder `some-component/index.js`, as long as it is consistent.
+- Use **kebab-case** and **.spec.js** for test file naming.
 
 
-## End of Line
+## Tools
 
-👉 LF
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Global State Management**: [<sup>[1]</sup>](#1)
+  - API-related state: [React Query](https://react-query.tanstack.com/) [<sup>[2]</sup>](#2)
+  - Form-related state: [React Hook Form](https://react-hook-form.com/) [<sup>[3]</sup>](#3)
+  - Anything not related to API & form:  
+    _Does it complex & frequent-update?_
+    - _No_ 👉 Use built-in react context (combined with useState)
+    - _Yes_ 👉 Are you sure? What kind of state which is not related to data-fetching or forms but complex & frequent-update? Explain this before using additional state-management library.
+- **Date & Time Utility**: [date-fns](https://date-fns.org/)
+- **Data Fetching**: [axios](https://github.com/axios/axios)
+- **className Utility**: [clsx](https://www.npmjs.com/package/clsx)
+- **Internationalization (i18n)**: [built-in Next.js internationalized routing](https://nextjs.org/blog/next-10#internationalized-routing) + [next-translate](https://github.com/vinissimus/next-translate)
+- **Fallback UI**: use built-in React [Error Boundaries](https://reactjs.org/docs/error-boundaries.html)
+- **Linting**:
+  - Ecma Version: 12 (es2021) 
+  - Plugin: Airbnb, react, jsx-a11y
+- **Testing**: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
-Biar standar, gak ada perbedaan antara pengguna Mac, Linux, & Windows.
+Notes:
+1. <span id="1"></span>Global state means the state which can be **accessed & updated from anywhere** in the component tree (inside a provider) without needing to pass down the props.
+2. <span id="2"></span>Use [QueryClientProvider](https://react-query.tanstack.com/reference/QueryClientProvider) & [useQueryClient](https://react-query.tanstack.com/reference/useQueryClient).
+3. <span id="3"></span>Use FormProvider & [useFormContext](https://react-hook-form.com/api#useFormContext).
 
 
-## Environment Variable
+## Naming Conventions
 
-Untuk development pake **.env.local** ya, jangan pake **.env**.  
-Ikutin sesuai official websitenya Next.js, [https://nextjs.org/docs/basic-features/environment-variables](https://nextjs.org/docs/basic-features/environment-variables)  
-
-Penamaan environment variable ikutin official website:  
-Kalo valuenya mau diekspos ke browser, gunakan `NEXT_PUBLIC_xxx`.  
-Kalo valuenya gak mau dieskpos ke browser, baru gak perlu prefix `NEXT_PUBLIC_`.
-
----
-
-## Notes
-
-Ketika jalanin `npm run build` bakal dapet warning:  
-_You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`_  
-Warning tsb karena ada `getInitialProps` di `pages/_app`. Warning tsb akan ilang kalo `getInitialProps` dihapus.
-
-Kenapa ada `getInitialProps` di `pages/_app`?  
-Ini cuma dipake kalo aplikasi yg kita develop punya fitur login.  
-Kita ngambil auth-nya (decoded JWT) scr server-side. Tujuannya biar _user-experience_-nya lebih bagus.
+- Variable name:
+  - Should be camelCase.
+  - For boolean variable, use "is", "can", or "has" prefix.  
+    Example: `isExpired`, `isDeleted`, `canEditSomething`, `hasSomething`.
+- Function name:
+  - Should be camelCase.
+  - Should starts with verb 1, and don't abbreviate that verb.  
+    ✅ Correct example: `createAccount`, `validateForm`  
+    ❌ Incorrect example: `creatingAccount`, `vldtForm`
+  - For event-handler function, you can use "on" or "handle" prefix.  
+    Example: `onScroll` / `handleScroll`, `onSave` / `handleSave`
+- React component:
+  - Should be PascalCase.
+  - Page component (components in `src/pages` folder) name should ends with Page.  
+    Example: `HomePage`, `LoginPage`, `ProductDetailPage`.
+- React Query hook:
+  - Should use "query" or "mutation" prefix. Example:  
+    ✅ Correct example:  
+    ```javascript
+    const queryProducts = useQuery();
+    const queryProductById = useQuery();
+    const queryUsers = useQuery();
+    const mutationProduct = useMutation();
+    const mutationUser = useMutation();
+    ```
+    ❌ Incorrect example:  
+    ```javascript
+    // Don't destructure since the destructured variables name will conflict
+    // You will end up renaming many variables
+    const {
+      data: dataProduct, isLoading: isLoadingProduct, error: errorProduct, refetch: refetchProduct,
+    } = useQuery();
+    const {
+      data: dataUser, isLoading: isLoadingUser, error: errorUser, refetch: refetchUser,
+    } = useQuery();
+    const {
+      data: dataMutationUser, isLoading: isLoadingMutationUser, error: errorMutationUser, mutate: mutateUser,
+    } = useMutation();
+    ```
+- Environment variable which needs to be exposed to the browser should use NEXT_PUBLIC_ prefix.  
+  Example: `NEXT_PUBLIC_GOOGLE_API_KEY = abcdefghijk`.
