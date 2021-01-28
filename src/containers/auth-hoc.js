@@ -1,12 +1,14 @@
-import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+/* eslint-disable react/prop-types */
 import { useRouter } from 'next/router';
-import { useAuthContext } from './auth-context';
+import { useEffect } from 'react';
 import Base from '../components/layouts/base';
 
-export default function ProtectedRoute({ children, addRedirectQuery = true }) {
+const DEFAULT_OPTION = { addRedirectQuery: true };
+
+const withAuth = (Component, { addRedirectQuery } = DEFAULT_OPTION) => (props) => {
   const { replace, route } = useRouter();
-  const auth = useAuthContext();
+
+  const { auth } = props;
   const isAuthenticated = Boolean(auth.id);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export default function ProtectedRoute({ children, addRedirectQuery = true }) {
   }, []);
 
   return isAuthenticated
-    ? children
+    ? <Component {...props} />
     : (
       <Base>
         <main className="h-screen flex items-center justify-center">
@@ -26,9 +28,6 @@ export default function ProtectedRoute({ children, addRedirectQuery = true }) {
         </main>
       </Base>
     );
-}
-
-ProtectedRoute.propTypes = {
-  children: PropTypes.node,
-  addRedirectQuery: PropTypes.bool,
 };
+
+export default withAuth;
