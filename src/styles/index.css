@@ -4,6 +4,7 @@
 
 /* Components */
 @import "tailwindcss/components";
+@import "./vandors/nprogress.css";
 @import "./vandors/react-modal.css";
 @import "./components/button.css";
 @import "./components/table.css";

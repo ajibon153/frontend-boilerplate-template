@@ -1,0 +1,6 @@
+#nprogress .spinner {
+    z-index: 1100 !important;
+    top: auto !important;
+    bottom: 17px !important;
+    right: 17px !important;
+}
