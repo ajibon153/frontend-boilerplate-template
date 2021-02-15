@@ -1,2 +1,8 @@
-* text eol=lf
-*.bat text eol=crlf
+*.js eol=lf
+*.jsx eol=lf
+*.json eol=lf
+*.xml eol=lf
+*.html eol=lf
+*.css eol=lf
+*.scss eol=lf
+*.md eol=lf
