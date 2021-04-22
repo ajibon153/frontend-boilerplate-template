@@ -1,0 +1,19 @@
+@tailwind base;
+
+@import 'base';
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+@import 'vandors/nprogress';
+@import 'vandors/react-modal';
+
+@import 'components/button';
+@import 'components/table';
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
+@import 'utilities';

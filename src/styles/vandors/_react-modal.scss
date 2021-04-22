@@ -1,0 +1,24 @@
+.ReactModal__Overlay {
+    @apply opacity-0 transition-opacity duration-200;
+
+    &--after-open {
+        @apply opacity-100;
+    }
+
+    &--before-close {
+        @apply opacity-0;
+    }
+}
+
+
+.ReactModal__Content {
+    @apply opacity-0 transform translate-y-8 transition-all duration-200;
+
+    &--after-open {
+        @apply opacity-100 translate-y-0;
+    }
+
+    &--before-close {
+        @apply opacity-0 translate-y-8;
+    }
+}

@@ -4,7 +4,7 @@ import { getDecodedJWT } from '../utils/auth';
 import { publicRuntimeConfig } from '../config/env';
 import { disableBrowserConsoleLog } from '../utils/console';
 import Core from '../containers/_core';
-import '../styles/index.css';
+import '../styles/index.scss';
 
 const { NEXT_PUBLIC_ENABLE_CONSOLE_LOG } = publicRuntimeConfig;
 
