@@ -38,12 +38,12 @@
 │   │   ├── ⚛️ commons/        Common components
 │   │   ├── ⚛️ forms/          Common components which is used specifically for user input
 │   │   ├── ⚛️ layouts/        Components which has specific location in a page and cannot just be placed anywhere (e.g. header, sidebar, footer)
-│   │   ├── ⚛️ sections/       Components which create a block/section of a page
-│   │   └── ⚛️ views/          Biggest components, containing section components
+│   │   └── ⚛️ sections/       Components which create a block/section of a page
 │   ├── 📂 config/
 │   ├── ⚛️ containers/         Components which has no UI, only for functionality (e.g. context-provider)
 │   ├── ⚛️ hooks/              Custom hooks
 │   ├── ⚛️ pages/              Next.js page components
+│   ├── 📂 store/              Zustand's stores
 │   ├── 📂 styles/
 │   │   ├── 📂 components/     CSS files for components (e.g. button, table)
 │   │   ├── 📂 vendors/        CSS files for modifying external component library's style (e.g. react-select, react-modal)
@@ -84,13 +84,9 @@ Notes:
 ## Tools
 
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Global State Management**: [<sup id="1">[1]</sup>](#note-1)
-  - API-related state: [React Query](https://react-query.tanstack.com/) [<sup id="2">[2]</sup>](#note-2)
-  - Form-related state: [React Hook Form](https://react-hook-form.com/) [<sup id="3">[3]</sup>](#note-3)
-  - Anything not related to API & form:  
-    _Does it complex & frequent-update?_
-    - _No_ 👉 Use built-in react context (combined with useState)
-    - _Yes_ 👉 Are you sure? What kind of state which is not related to data-fetching or forms but complex & frequent-update? Explain this before using additional state-management library.
+- **Global State Management**: [Zustand](https://github.com/pmndrs/zustand/)
+- **Server State Management**: [React Query](https://react-query.tanstack.com/)
+- **Form Handling**: [React Hook Form](https://react-hook-form.com/)
 - **Date & Time Utility**: [date-fns](https://date-fns.org/)
 - **Data Fetching**: [axios](https://github.com/axios/axios)
 - **className Utility**: [clsx](https://www.npmjs.com/package/clsx)
@@ -100,11 +96,6 @@ Notes:
   - Ecma Version: 12 (es2021) 
   - Plugin: Airbnb, react, jsx-a11y
 - **Testing**: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-
-Notes:  
-[<sup id="note-1">[1]</sup>](#1) <span id="1"></span>Global state means the state which can be **accessed & updated from anywhere** in the component tree (inside a provider) without needing to pass down the props.  
-[<sup id="note-2">[2]</sup>](#2) <span id="2"></span>Use [QueryClientProvider](https://react-query.tanstack.com/reference/QueryClientProvider) & [useQueryClient](https://react-query.tanstack.com/reference/useQueryClient).  
-[<sup id="note-3">[3]</sup>](#3) <span id="3"></span>Use FormProvider & [useFormContext](https://react-hook-form.com/api#useFormContext).
 
 
 ## Naming Conventions

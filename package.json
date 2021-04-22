@@ -40,7 +40,8 @@
     "react-hook-form": "^6.15.7",
     "react-modal": "^3.13.1",
     "react-query": "^3.13.11",
-    "sass": "^1.32.11"
+    "sass": "^1.32.11",
+    "zustand": "^3.4.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.10",
